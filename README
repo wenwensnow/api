@@ -1,0 +1,52 @@
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiMTIzIiwiaWF0IjoxNTIzODQyMzYxLCJleHAiOjE1MjM5Mjg3NjF9.8Hm6L0Fa3px8GY9c79ljDGVRgdVw4wy5bA6wXhGRK6c
+
+<----- Login ----->
+/api/auth/login
+method: POST
+header -> Content-Type: application/x-www-form-urlenconded
+body -> user: user
+	password: password
+
+<------ Get file list ------>
+/api/data/files/get
+method: GET
+header -> x-access-token: token
+params -> path: path
+
+path = "" or path = null -> root folder
+Example: /api/data/files/get?path="dogmeat"
+
+
+<------ Create a folder ----->
+/api/data/files/create_folder
+method: GET
+header -> x-access-token: token
+params -> path: new folder's parent's folder
+          foldername: name of the new folder
+
+path = "" or path = null -> root folder
+Example: /api/data/files/create_folder?path="wenwen"&foldername="dogmeat"
+	or /api/data/files/create_folder?foldername="dogmeat"
+
+<----- Delete a file or folder ----->
+/api/data/files/delete
+method: GET
+header -> x-access-token: token
+params -> path: full path of the file or folder
+
+Example: /api/data/files/delete?path=folder/myfile.txt
+	or /api/data/files/delete?path=folder/folder
+
+<----- Rename a file or folder ----->
+/api/data/files/rename
+method: GET
+header -> x-access-token: token
+params -> path: full path of the file or folder
+	  newname: new name of the file or folder
+
+Example: /api/data/files/rename?path="folder/myfile.txt"&newname="dogmeat.txt"
+
+<--- Move a file/folder ---->
+/api/data/files/move
+method: GET
+TBD

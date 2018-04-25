@@ -1,0 +1,6 @@
+node_modules
+# exclude everything
+api/storage/*
+
+# exception to the rule
+!api/storage/.gitkeep 
